@@ -16,7 +16,7 @@ describe('Programs', function (){
                 .end(function (err, res) {
                     expect(res).to.have.status(200);
                     expect(res.body).to.be.a('array');
-                    expect(res.body.length).to.eql(2);
+                    expect(res.body.length).to.eql(10);
                     done();
                 });
               });
@@ -37,12 +37,35 @@ describe('Programs', function (){
                     expect(res).to.have.status(200);
                     expect(res.body).to.be.a('array');
                     expect(res.body.length).to.eql(2);
+
                     done();
                 });
               });
     });
 
+    describe('POST /Programs', function () {
+        it('should return confirmation message and add a program', function(done) {
+            var programs = {
+                MuscleType: 'Chest' ,
+                ExerciseName: 'Chest Press',
+                Sets: 4,
+                Reps: 8,
+                RestTime: 60,
+                Weight: 100
+            };
+            chai.request(server)
+                .post('/programs')
+                .send(programs)
+                .end(function(err, res) {
+                    expect(res).to.have.status(200);
+                    expect(res.body).to.have.property('message').equal('Program Added!' ) ;
+                    done();
+                });
+        });
+    });
 
 
-  });
+
+
+});
 

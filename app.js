@@ -48,6 +48,10 @@ app.use(function(req, res, next) {
   next(err);
 });
 
+if (process.env.NODE_ENV !== 'test') {
+    app.use(logger('dev'));
+}
+
 
 // error handler
 app.use(function(err, req, res, next) {
