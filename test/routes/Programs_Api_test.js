@@ -2,12 +2,14 @@ var chai = require('chai');
 var chaiHttp = require('chai-http');
 var server = require('../../bin/www');
 var expect = chai.expect;
+// var datastore = require('../models/Programs');
 
 chai.use(chaiHttp);
 chai.use(require('chai-things'));
 var _ = require('lodash' );
 
 describe('Programs', function (){
+
 
     describe('GET /programs', function () {
         it('should return all the programs', function (done) {
@@ -16,7 +18,7 @@ describe('Programs', function (){
                 .end(function (err, res) {
                     expect(res).to.have.status(200);
                     expect(res.body).to.be.a('array');
-                    expect(res.body.length).to.eql(10);
+                    expect(res.body.length).to.eql(20);
                     done();
                 });
               });
@@ -64,7 +66,7 @@ describe('Programs', function (){
         });
     });
 
-    describe.only('PUT /Programs/:id/Weight', function () {
+    describe('PUT /Programs/:id/Weight', function () {
         it('should display a message when weight has been added to program', function(done) {
             chai.request(server)
                 .put('/Programs/59e7883b97c2090634e3853e/Weight')
@@ -85,6 +87,20 @@ describe('Programs', function (){
                 });
         });
 
+    });
+    describe('DELETE/Programs/:id', function () {
+        it('should delete a program with the ID passed in', function (done) {
+            chai.request(server)
+                .delete('/Programs/59fb6c046321cc0360841e4d')
+                .end(function(err, res){
+                    expect(res).to.have.status(200);
+                    expect(res.body).to.have.property('message').equal('Program Deleted!' ) ;
+                    done();
+                });
+
+
+
+        })
     });
 });
 
