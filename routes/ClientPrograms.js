@@ -111,8 +111,10 @@ router.updateProgram = function(req,res) {
             program.Weight = req.body.Weight;
 
             program.save(function (err) {
-                if (err)
-                    res.send(err);
+                if (err) {
+                    res.status(404);
+                    res.json({message: 'Invalid Program Id!'});
+                }
                 else
                     res.json({ message: 'Program has been updated', data: program });
             });
