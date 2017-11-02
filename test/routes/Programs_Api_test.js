@@ -29,7 +29,17 @@ describe('Programs', function (){
                     expect(res.body.length).to.eql(1);
                     done();
                 });
-        });
+             });
+        it('should return programs related to that muscle type', function (done) {
+            chai.request(server)
+                .get('/programs/id/Legs')
+                .end(function (err, res) {
+                    expect(res).to.have.status(200);
+                    expect(res.body).to.be.a('array');
+                    expect(res.body.length).to.eql(2);
+                    done();
+                });
+              });
     });
 
 
