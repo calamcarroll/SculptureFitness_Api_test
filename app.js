@@ -31,10 +31,6 @@ app.get('/programs', ClientPrograms.findAllPrograms);
 app.get('/programs/:id', ClientPrograms.findOneProgram);
 app.get('/programs/:id/:MuscleType', ClientPrograms.findByType);
 
-app.get('/programs/:id/:ExerciseName', ClientPrograms.fuzzySearch);
-
-
-
 app.post('/programs', ClientPrograms.addProgram);
 
 app.delete('/programs/:id', ClientPrograms.deleteProgram);

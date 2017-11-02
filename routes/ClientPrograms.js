@@ -25,7 +25,7 @@ router.findAllPrograms = function(req, res){
         res.json(Programs);
     });
 };
-//todo take out id field in end point. No need for it to be in
+
 router.findOneProgram = function(req, res) {
 
     Program.find({ "_id" : req.params.id },function(err, Program) {
@@ -46,44 +46,6 @@ router.findByType = function(req, res){
             res.json({message: 'Muscle Type NOT Found!', errmsg: err});
         }
     });
-};
-//TODO Fuzzy search function still to be implemented
-router.fuzzySearch = function (req, res) {
-
-    // Program.find({$text: {$search: req.params.ExerciseName}})
-    //     .skip(20)
-    //     .limit(10)// for pagination it skips the first 20 results because its already requested and limits the page to only show 10 results
-    //     .exec(function(err, Docs) {
-    //         if (err){
-    //             res.json({ message: 'Search for exercise name not found with error:', errmsg : err } );
-    //         }else if(Docs !== null){
-    //             res.json(Program)
-    //         }
-    //     });
-
-    //TODO Other way to implement fuzzy search
-    // var programsWithTag = [];
-    // var searchTag = req.params.tags;
-    // console.log(searchTag);
-    //
-    // for(var i = 0; i< Program.length; i++){
-    //     var currentTags = Program[i].tags;
-    //     console.log(currentTags);
-    //     if(currentTags.indexOf(searchTag) !== -1)
-    //         programsWithTag.push(Program[i]);
-    // }
-    // if(programsWithTag.length !== 0)
-    //     res.json(programsWithTag);
-    // else
-    //     res.json({message: "No Programs like this found"})
-//TODO THIS PART IS FOR THE MOST RECENT FUZZY SEARCH USING NPM FUZZY IMPORT
-
-    // var list = [Program.find({ "ExerciseName" : req.params.ExerciseName})];
-    // var results = fuzzy.filter('req.params.ExerciseName', Program)
-    // var matches = results.map(function(el) {
-    //
-    //     return el.string; });
-    // console.log(matches);
 };
 
 router.addProgram = function(req, res) {
