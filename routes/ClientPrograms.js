@@ -81,19 +81,21 @@ router.deleteProgram = function(req, res) {
 router.incrementWeight = function(req, res) {
 
     Program.findById(req.params.id, function(err,program) {
-        if (err)
-            res.send(err);
-        else {
+        if (err){
+            res.status(404);
+            res.json({ message: 'Invalid Program Id!'});
+        }else {
             program.Weight += 2;
             program.save(function (err) {
                 if (err)
-                    res.send(err);
-                else
+                {
+                    res.status(404);
+                    res.json({ message: 'Invalid Program Id!'});
+                }else
                     res.json({ message: 'Weight incremented by 2kg!', data: program });
-            });
-        }
+            });}
     });
-};
+}
 
 router.updateProgram = function(req,res) {
 

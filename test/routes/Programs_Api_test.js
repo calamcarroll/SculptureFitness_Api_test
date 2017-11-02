@@ -64,8 +64,32 @@ describe('Programs', function (){
         });
     });
 
+    describe.only('PUT /Programs/:id/Weight', function () {
+        it('should display a message when weight has been added to program', function(done) {
+            chai.request(server)
+                .put('/Programs/59e7883b97c2090634e3853e/Weight')
+                .end(function(err, res) {
+                    expect(res).to.have.status(200);
+                    // expect(res.body).to.be.a('message');
+                    expect(res.body).to.have.property('message').equal('Weight incremented by 2kg!' ) ;
+                    done();
+                });
+        });
+        it('should return a 404 status and message for invalid program ID', function(done) {
+            chai.request(server)
+                .put('/Programs/59e7883b97c2090/Weight')
+                .end(function(err, res) {
+                    expect(res).to.have.status(404);
+                    expect(res.body).to.have.property('message').equal('Invalid Program Id!' ) ;
+                    done();
+                });
+        });
 
-
-
+    });
 });
+
+
+
+
+
 
