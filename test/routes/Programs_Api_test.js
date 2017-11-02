@@ -20,7 +20,17 @@ describe('Programs', function (){
                     done();
                 });
               });
-             });
+        it('should return one program', function (done) {
+            chai.request(server)
+                .get('/programs/59e7883b97c2090634e3853e')
+                .end(function (err, res) {
+                    expect(res).to.have.status(200);
+                    expect(res.body).to.be.a('array');
+                    expect(res.body.length).to.eql(1);
+                    done();
+                });
+        });
+    });
 
 
 
