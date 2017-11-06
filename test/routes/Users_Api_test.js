@@ -77,6 +77,30 @@ describe('Users', function () {
                 });
         });
     });
+
+    describe('GET /Users', function () {
+        it('should return all the users', function (done) {
+            chai.request(server)
+                .get('/Users')
+                .end(function (err, res) {
+                    expect(res).to.have.status(200);
+                    expect(res.body).to.be.a('array');
+                    expect(res.body.length).to.not.eql(0);
+                    done();
+                });
+        });
+        it('should return one users', function (done) {
+
+            chai.request(server)
+                .get('/users/59f1e69dd0ae514f10a24a66')
+                .end(function (err, res) {
+                    expect(res).to.have.status(200);
+                    expect(res.body).to.be.a('array');
+                    expect(res.body.length).to.eql(1);
+                    done();
+                });
+        });
+    });
     describe('PUT /Users/:id/', function () {
         it('should display a message when the user has been updated', function(done) {
 
