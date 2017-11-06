@@ -162,18 +162,6 @@ describe('Programs', function (){
 
     describe('DELETE/Programs/:id', function () {
         it('should delete a program with the ID passed in', function (done) {
-            var programs = {
-                _id: '5a004b61966d1805fc9f9288',
-                MuscleType: 'Core' ,
-                ExerciseName: 'Crunches',
-                Sets: 4,
-                Reps: 8,
-                RestTime: 60,
-                Weight: 100
-            };
-            chai.request(server)
-                .post('/programs')
-                .send(programs);
 
             chai.request(server)
                 .delete('/Programs/59f1e69dd0ae514f10a24a82')
