@@ -34,6 +34,7 @@ app.get('/users',ClientUsers.getAllUsers );
 app.get('/users/:id', ClientUsers.findOneUser);
 app.post('/users', ClientUsers.addUser);
 app.delete('/users/:id', ClientUsers.deleteUser);
+app.put('/users/:id', ClientUsers.updateUserInfo);
 
 app.get('/programs', ClientPrograms.findAllPrograms);
 app.get('/programs/:id', ClientPrograms.findOneProgram);

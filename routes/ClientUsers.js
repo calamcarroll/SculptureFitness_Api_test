@@ -81,21 +81,21 @@ router.updateUserInfo = function(req,res) {
         if (err)
             res.send(err);
         else {
-            user.Username = req.body.Username;
-            user.fName = req.body.fName;
-            user.lName = req.body.lName;
-            user.Email = req.body.Email;
-            user.Weight = req.body.Weight;
-            user.Height = req.body.Height;
-            user.BodyFat = req.body.BodyFat;
+            users.Username = req.body.Username;
+            users.fName = req.body.fName;
+            users.lName = req.body.lName;
+            users.Email = req.body.Email;
+            users.Weight = req.body.Weight;
+            users.Height = req.body.Height;
+            users.BodyFat = req.body.BodyFat;
 
-            user.save(function (err) {
+            users.save(function (err) {
                 if (err) {
                     res.status(404);
                     res.json({message: 'Invalid Program Id!'});
                 }
                 else
-                    res.json({ message: 'Program has been updated', data: user });
+                    res.json({ message: 'Program has been updated', data: users });
             });
         }
     });
