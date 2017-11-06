@@ -44,6 +44,28 @@ router.findOneUser = function(req, res) {
     });
 };
 
+router.addUser = function(req, res) {
+
+    var user = new User();
+    user._id = req.body._id;
+    user.Username = req.body.Username;
+    user.fName = req.body.fName;
+    user.lName = req.body.lName;
+    user.Email = req.body.Email;
+    user.Weight = req.body.Weight;
+    user.Height = req.body.Height;
+    user.BodyFat = req.body.BodyFat;
+
+    // console.log('Adding program: ' + JSON.stringify(User));
+
+    user.save(function(err) {
+        if (err)
+            res.send(err);
+        else
+
+            res.json({ message: 'User ' + user.Username+ ' Added!   ', data: user});
+    });
+};
 
 module.exports = router;
 

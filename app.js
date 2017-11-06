@@ -31,6 +31,8 @@ app.use('/', index);
 
 
 app.get('/users',ClientUsers.getAllUsers );
+app.get('/users/:id', ClientUsers.findOneUser);
+app.post('/users', ClientUsers.addUser);
 
 app.get('/programs', ClientPrograms.findAllPrograms);
 app.get('/programs/:id', ClientPrograms.findOneProgram);
@@ -45,8 +47,8 @@ app.put('/programs/:id/Weight', ClientPrograms.incrementWeight);
 app.put('/programs/:id', ClientPrograms.updateProgram);
 
 
- app.get('/users/:id', ClientUsers.findOneUser);
-// app.post('/users', ClientUsers.addUser);
+
+
 
 
 
