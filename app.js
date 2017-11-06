@@ -45,8 +45,8 @@ app.put('/programs/:id/Weight', ClientPrograms.incrementWeight);
 app.put('/programs/:id', ClientPrograms.updateProgram);
 
 
-// app.get('/users/:id', ClientUsers.findOneUser);
-app.post('/users', ClientUsers.addUser);
+ app.get('/users/:id', ClientUsers.findOneUser);
+// app.post('/users', ClientUsers.addUser);
 
 
 

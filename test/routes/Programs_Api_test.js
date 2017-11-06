@@ -14,6 +14,7 @@ describe('Programs', function (){
     describe('POST /Programs', function () {
         it('should return confirmation message and add a program', function(done) {
             var programs = {
+                _id: '5a004b61966d1805fc9f92d0',
                 MuscleType: 'Legs ' ,
                 ExerciseName: 'Chest Press',
                 Sets: 4,

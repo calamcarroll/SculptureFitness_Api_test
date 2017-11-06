@@ -2,11 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0a4c65cb-8f44-4195-ac24-eb0b9a024f6d" name="Default" comment="">
-      <change type="MOVED" beforePath="$PROJECT_DIR$/test/routes/Client_Programs_test.js" afterPath="$PROJECT_DIR$/test/routes/Database_test.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app.js" afterPath="$PROJECT_DIR$/app.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/models/Users.js" afterPath="$PROJECT_DIR$/models/Users.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/routes/ClientPrograms.js" afterPath="$PROJECT_DIR$/routes/ClientPrograms.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/routes/ClientUsers.js" afterPath="$PROJECT_DIR$/routes/ClientUsers.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/routes/Programs_Api_test.js" afterPath="$PROJECT_DIR$/test/routes/Programs_Api_test.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -21,11 +19,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="app.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="app.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="126">
-              <caret line="30" column="0" lean-forward="true" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
+            <state relative-caret-position="400">
+              <caret line="59" column="3" lean-forward="true" selection-start-line="59" selection-start-column="3" selection-end-line="59" selection-end-column="3" />
               <folding />
             </state>
           </provider>
@@ -34,18 +32,18 @@
       <file leaf-file-name="Programs_Api_test.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/test/routes/Programs_Api_test.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1088">
-              <caret line="58" column="39" lean-forward="false" selection-start-line="58" selection-start-column="39" selection-end-line="58" selection-end-column="39" />
+            <state relative-caret-position="336">
+              <caret line="16" column="48" lean-forward="false" selection-start-line="16" selection-start-column="48" selection-end-line="16" selection-end-column="48" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ClientUsers.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ClientUsers.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/routes/ClientUsers.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="399">
-              <caret line="19" column="0" lean-forward="true" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
+            <state relative-caret-position="945">
+              <caret line="45" column="0" lean-forward="true" selection-start-line="45" selection-start-column="0" selection-end-line="45" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -74,7 +72,7 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="dummy://restClient/response85.json" root0="SKIP_INSPECTION" />
+    <setting file="dummy://restClient/response93.json" root0="SKIP_INSPECTION" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -86,10 +84,10 @@
         <option value="$PROJECT_DIR$/package.json" />
         <option value="$PROJECT_DIR$/models/Users.js" />
         <option value="$PROJECT_DIR$/routes/ClientPrograms.js" />
-        <option value="$PROJECT_DIR$/test/routes/Programs_Api_test.js" />
         <option value="$PROJECT_DIR$/test/routes/Client_Programs_test.js" />
-        <option value="$PROJECT_DIR$/app.js" />
+        <option value="$PROJECT_DIR$/test/routes/Programs_Api_test.js" />
         <option value="$PROJECT_DIR$/routes/ClientUsers.js" />
+        <option value="$PROJECT_DIR$/app.js" />
       </list>
     </option>
   </component>
@@ -184,7 +182,55 @@
         <RestClientRequest>
           <option name="httpMethod" value="GET" />
           <option name="urlBase" value="http://localhost:3000" />
+          <option name="urlPath" value="/users/5a00595b48a6152630060452" />
+          <option name="headers">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="Accept" />
+                <option name="value" value="*/*" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Cache-Control" />
+                <option name="value" value="no-cache" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Content-Type" />
+                <option name="value" value="application/json" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parametersEnabled" value="true" />
+          <option name="textToSend" value="{   &quot;Weight&quot;: 100,   &quot;RestTime&quot;: 2,   &quot;Reps&quot;: 15,   &quot;Sets&quot;: 4,   &quot;ExerciseName&quot;: &quot;  Deadlifts&quot;,   &quot;MuscleType&quot;: &quot;Back&quot; }" />
+          <option name="filesToSend" value="" />
+        </RestClientRequest>
+        <RestClientRequest>
+          <option name="httpMethod" value="GET" />
+          <option name="urlBase" value="http://localhost:3000" />
           <option name="urlPath" value="/users" />
+          <option name="headers">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="Accept" />
+                <option name="value" value="*/*" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Cache-Control" />
+                <option name="value" value="no-cache" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Content-Type" />
+                <option name="value" value="application/json" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parametersEnabled" value="true" />
+          <option name="textToSend" value="{   &quot;Weight&quot;: 100,   &quot;RestTime&quot;: 2,   &quot;Reps&quot;: 15,   &quot;Sets&quot;: 4,   &quot;ExerciseName&quot;: &quot;  Deadlifts&quot;,   &quot;MuscleType&quot;: &quot;Back&quot; }" />
+          <option name="filesToSend" value="" />
+        </RestClientRequest>
+        <RestClientRequest>
+          <option name="httpMethod" value="GET" />
+          <option name="urlBase" value="http://localhost:3000" />
+          <option name="urlPath" value="/programs" />
           <option name="headers">
             <list>
               <KeyValuePair>
@@ -1200,12 +1246,12 @@
       <workItem from="1509634390681" duration="23329000" />
       <workItem from="1509666893995" duration="3890000" />
       <workItem from="1509896965851" duration="392000" />
-      <workItem from="1509967102651" duration="5933000" />
+      <workItem from="1509967102651" duration="6675000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="53976000" />
+    <option name="totallyTimeSpent" value="54718000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1499,14 +1545,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="30" column="0" lean-forward="true" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/test/routes/Database_test.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1481">
@@ -1525,16 +1563,24 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/test/routes/Programs_Api_test.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1088">
-          <caret line="58" column="39" lean-forward="false" selection-start-line="58" selection-start-column="39" selection-end-line="58" selection-end-column="39" />
+        <state relative-caret-position="336">
+          <caret line="16" column="48" lean-forward="false" selection-start-line="16" selection-start-column="48" selection-end-line="16" selection-end-column="48" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/routes/ClientUsers.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="399">
-          <caret line="19" column="0" lean-forward="true" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
+        <state relative-caret-position="945">
+          <caret line="45" column="0" lean-forward="true" selection-start-line="45" selection-start-column="0" selection-end-line="45" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="400">
+          <caret line="59" column="3" lean-forward="true" selection-start-line="59" selection-start-column="3" selection-end-line="59" selection-end-column="3" />
           <folding />
         </state>
       </provider>

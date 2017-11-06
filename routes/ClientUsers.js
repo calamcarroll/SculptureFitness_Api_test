@@ -17,6 +17,32 @@ db.once('open', function (){
 });
 
 
+router.getAllUsers = function(req, res){
+
+    User.find(function(err,User) {
+
+        if(err)
+            res.json({ message: 'User NOT Found!', errmsg : err } );
+        else
+
+            res.json(User);
+
+    });
+};
+
+
+
+
+router.findOneUser = function(req, res) {
+
+    User.find({ "_id" : req.params.id },function(err, Users) {
+        if (err)
+            res.json({ message: 'User NOT Found!', errmsg : err } );
+        else
+            res.json(Users);
+
+    });
+};
 
 
 module.exports = router;
