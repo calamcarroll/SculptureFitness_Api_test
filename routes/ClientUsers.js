@@ -9,6 +9,7 @@ var db = mongoose.connection;
 // Database connection code
 mongoose.connect('mongodb://localhost:27017/usersdb', { useMongoClient: true });
 
+
 db.on('error', function (err) {
     console.log('connection error', err);
 });
