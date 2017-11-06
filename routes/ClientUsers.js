@@ -62,7 +62,7 @@ router.addUser = function(req, res) {
             res.send(err);
         else
 
-            res.json({ message: 'User ' + user.Username+ ' Added!   ', data: user});
+            res.json({ message: 'User Added!', data: user});
     });
 };
 
