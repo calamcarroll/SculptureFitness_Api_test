@@ -56,8 +56,6 @@ router.addUser = function(req, res) {
     user.Height = req.body.Height;
     user.BodyFat = req.body.BodyFat;
 
-    // console.log('Adding program: ' + JSON.stringify(User));
-
     user.save(function(err) {
         if (err)
             res.send(err);
@@ -66,6 +64,44 @@ router.addUser = function(req, res) {
             res.json({ message: 'User ' + user.Username+ ' Added!   ', data: user});
     });
 };
+
+router.deleteUser = function(req, res) {
+    User.findByIdAndRemove(req.params.id, function(err) {
+        if (err)
+            res.send(err);
+        else
+            res.json({ message: 'User Deleted!'});
+    });
+};
+
+
+router.updateUserInfo = function(req,res) {
+
+    User.findById(req.params.id, function(err,users) {
+        if (err)
+            res.send(err);
+        else {
+            user.Username = req.body.Username;
+            user.fName = req.body.fName;
+            user.lName = req.body.lName;
+            user.Email = req.body.Email;
+            user.Weight = req.body.Weight;
+            user.Height = req.body.Height;
+            user.BodyFat = req.body.BodyFat;
+
+            user.save(function (err) {
+                if (err) {
+                    res.status(404);
+                    res.json({message: 'Invalid Program Id!'});
+                }
+                else
+                    res.json({ message: 'Program has been updated', data: user });
+            });
+        }
+    });
+
+}
+
 
 module.exports = router;
 

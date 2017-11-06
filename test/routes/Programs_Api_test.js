@@ -14,7 +14,7 @@ describe('Programs', function (){
     describe('POST /Programs', function () {
         it('should return confirmation message and add a program', function(done) {
             var programs = {
-                _id: '5a004b61966d1805fc9f92d0',
+                _id: '5a008484b73e4b2ec8ecda03',
                 MuscleType: 'Legs ' ,
                 ExerciseName: 'Chest Press',
                 Sets: 4,
@@ -29,6 +29,7 @@ describe('Programs', function (){
                     expect(res).to.have.status(200);
                     expect(res.body).to.have.property('message').equal('Program Added!' ) ;
                     done();
+
                 });
         });
     });
@@ -41,13 +42,14 @@ describe('Programs', function (){
                 .end(function (err, res) {
                     expect(res).to.have.status(200);
                     expect(res.body).to.be.a('array');
-                    expect(res.body.length).to.not.eql(0);// this value has to be incremented every time a test is run.
+                    expect(res.body.length).to.not.eql(0);
                     done();
                 });
               });
         it('should return one program', function (done) {
-            chai.request(server)
-                .get('/programs/5a004b61966d1805fc9f92d0')
+
+                chai.request(server)
+                .get('/programs/5a0085ad8a945706c42395f2')
                 .end(function (err, res) {
                     expect(res).to.have.status(200);
                     expect(res.body).to.be.a('array');
@@ -57,11 +59,11 @@ describe('Programs', function (){
              });
         it('should return programs related to that muscle type', function (done) {
             chai.request(server)
-                .get('/programs/id/Back')
+                .get('/programs/id/Legs')
                 .end(function (err, res) {
                     expect(res).to.have.status(200);
                     expect(res.body).to.be.a('array');
-                    expect(res.body.length).to.eql(2);
+                    expect(res.body.length).to.eql(1);
                     done();
                 });
               });
@@ -72,7 +74,7 @@ describe('Programs', function (){
     describe('PUT /Programs/:id/Weight', function () {
         it('should display a message when weight has been added to program', function(done) {
             chai.request(server)
-                .put('/Programs/5a004b61966d1805fc9f92d0/Weight')
+                .put('/Programs/5a0085ad8a945706c42395f2/Weight')
                 .end(function(err, res) {
                     expect(res).to.have.status(200);
                     // expect(res.body).to.be.a('message');
@@ -104,7 +106,7 @@ describe('Programs', function (){
                 Weight: 100
             };
             chai.request(server)
-                .put('/Programs/5a004b61966d1805fc9f92d0')
+                .put('/Programs/5a0085ad8a945706c42395f2')
                 .send(programs)
 
                 .end(function(err, res) {
@@ -115,11 +117,24 @@ describe('Programs', function (){
         });
     });
 
-    //
+
     // describe('DELETE/Programs/:id', function () {
     //     it('should delete a program with the ID passed in', function (done) {
+    //         var programs = {
+    //             _id: '5a004b61966d1805fc9f9288',
+    //             MuscleType: 'Core' ,
+    //             ExerciseName: 'Crunches',
+    //             Sets: 4,
+    //             Reps: 8,
+    //             RestTime: 60,
+    //             Weight: 100
+    //         };
     //         chai.request(server)
-    //             .delete('/Programs/5a004a0f7571632e24e1aa4e')
+    //             .post('/programs')
+    //             .send(programs);
+    //
+    //         chai.request(server)
+    //             .delete('/Programs/5a004b61966d1805fc9f9288')
     //             .end(function(err, res){
     //                 expect(res).to.have.status(200);
     //                 expect(res.body).to.have.property('message').equal('Program Deleted!' ) ;
@@ -130,7 +145,7 @@ describe('Programs', function (){
     //
     //     })
     // });
-    //
+
     // describe('DELETE/Programs', function () {
     //     it('Clear the collection of all programs', function (done) {
     //         chai.request(server)
