@@ -44,7 +44,11 @@ describe('Database Tests', function () {
             });
 
             testProgram.save(done);
+
+
         });
+
+
 
         it('Should error when a program with the wrong fields is saved to the db', function(done) {
             //Attempt to save with wrong info. An error should trigger
@@ -62,15 +66,16 @@ describe('Database Tests', function () {
                 throw new Error('Invalid Program added');
            });
         });
+        it('Should retrieve a program from the data base', function(done) {
 
-        // it('Should retrieve a program from the data base', function(done) {
-        //
-        //     testProgram.find({MuscleType: 'Legs'}, (err, Legs) => {
-        //         if(err) {throw err;}
-        //         if(Legs.length === 0) {throw new Error('No data!');}
-        //         done();
-        //     });
-        // });
+            Program.find({MuscleType: 'Legs'}, (err, Legs) => {
+                if(err) {throw err;}
+                if(Legs.length === 0) {throw new Error('No data!');}
+                done();
+            });
+        });
+
+
 
 
     });

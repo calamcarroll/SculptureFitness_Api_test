@@ -13,7 +13,7 @@ db.on('error', function (err) {
     console.log('connection error', err);
 });
 db.once('open', function (){
-    console.log('Connected to database');
+    console.log('Connected to programsdb');
 });
 
 
@@ -21,7 +21,7 @@ router.findAllPrograms = function(req, res){
     Program.find(function(err,Programs) {
         if (err)
             res.send(err);
-
+          else
         res.json(Programs);
     });
 };
@@ -77,6 +77,16 @@ router.deleteProgram = function(req, res) {
             res.json({ message: 'Program Deleted!'});
     });
 };
+
+router.clearAllPrograms = function(req, res){
+    Program.remove(function(err){
+        if(err){
+            console.log(err);
+        }else{
+            res.json({ message: 'All Programs Deleted!'});
+        }
+    });
+}
 
 router.incrementWeight = function(req, res) {
 
