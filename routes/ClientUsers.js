@@ -93,10 +93,10 @@ router.updateUserInfo = function(req,res) {
             users.save(function (err) {
                 if (err) {
                     res.status(404);
-                    res.json({message: 'Invalid Program Id!'});
+                    res.json({message: 'Invalid User Id!'});
                 }
                 else
-                    res.json({ message: 'Program has been updated', data: users });
+                    res.json({ message: 'User has been updated', data: users });
             });
         }
     });

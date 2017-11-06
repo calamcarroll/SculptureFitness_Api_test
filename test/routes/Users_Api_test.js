@@ -77,5 +77,28 @@ describe('Users', function () {
                 });
         });
     });
+    describe('PUT /Users/:id/', function () {
+        it('should display a message when the user has been updated', function(done) {
+
+            var users = {
+                Username: "jDoyle" ,
+                fName: "Joe",
+                lName: "Doyle",
+                Email: "JDoyle@gmail.com",
+                Weight: 130,
+                Height: 2.0,
+                BodyFat: 20
+            };
+            chai.request(server)
+                .put('/Users/59f1e69dd0ae514f10a24a66')
+                .send(users)
+
+                .end(function(err, res) {
+                    expect(res).to.have.status(200);
+                    expect(res.body).to.have.property('message').equal('User has been updated' ) ;
+                    done();
+                });
+        });
+    });
 });
 
