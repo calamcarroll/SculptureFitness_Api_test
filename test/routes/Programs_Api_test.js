@@ -57,7 +57,7 @@ describe('Programs', function () {
         it('should return confirmation message and add a program', function (done) {
             var programs = {
                 _id: '5a008484b73e4b2ec8ecda03',
-                MuscleType: 'Legs ',
+                MuscleType: 'Legs',
                 ExerciseName: 'Chest Press',
                 Sets: 4,
                 Reps: 8,
@@ -97,7 +97,7 @@ describe('Programs', function () {
                     done();
                 });
         });
-        it('Should error and return a message is the program is not found', function (done) {
+        it('Should error and return a message if the program is not found', function (done) {
 
             chai.request(server)
                 .get('/programs/59f1e69dd0ae514f1')
