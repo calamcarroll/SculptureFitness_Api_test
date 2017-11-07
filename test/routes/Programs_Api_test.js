@@ -90,7 +90,7 @@ describe('Programs', function (){
               });
         it('should return one program', function (done) {
 
-                chai.request(server)
+            chai.request(server)
                 .get('/programs/59f1e69dd0ae514f10a24a82')
                 .end(function (err, res) {
                     expect(res).to.have.status(200);
@@ -98,7 +98,18 @@ describe('Programs', function (){
                     expect(res.body.length).to.eql(1);
                     done();
                 });
-             });
+        });
+        it('Should error and return a message is the program is not found', function (done) {
+
+            chai.request(server)
+                .get('/programs/59f1e69dd0ae514f1')
+                .end(function (err, res) {
+                    expect(res).to.have.status(404);
+                    expect(res.body).to.have.property('message').equal('Program NOT Found!' ) ;
+                    done();
+                });
+        });
+
         it('should return programs related to that muscle type', function (done) {
             chai.request(server)
                 .get('/programs/id/Legs')
@@ -109,6 +120,8 @@ describe('Programs', function (){
                     done();
                 });
               });
+
+
     });
 
 

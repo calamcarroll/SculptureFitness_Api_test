@@ -30,8 +30,11 @@ router.findAllPrograms = function(req, res){
 router.findOneProgram = function(req, res) {
 
     Program.find({ "_id" : req.params.id },function(err, Program) {
-        if (err)
-            res.json({ message: 'Program NOT Found!', errmsg : err } );
+        if (err){
+            res.status(404)
+            res.json({ message: 'Program NOT Found!', errmsg : err } )
+        }
+
         else
             res.json(Program);
 
@@ -40,12 +43,16 @@ router.findOneProgram = function(req, res) {
 
 router.findByType = function(req, res){
 
-    Program.find({ 'MuscleType' : req.params.MuscleType },function(Err, Data) {
-        try{
-            res.json(Data)
-        }catch(Err){
-            res.json({message: 'Muscle Type NOT Found!', errmsg: err});
-        }
+    Program.find({ 'MuscleType' : req.params.MuscleType },function(err, Data) {
+
+            if(err){
+                res.status(200)
+                res.json({message: 'Muscle Type NOT Found!', errmsg: err});
+            }else{
+                res.json(Data)
+            }
+
+
     });
 };
 
