@@ -173,44 +173,44 @@ describe('Programs', function (){
     });
 
 
-    // describe('DELETE/Programs/:id', function () {
-    //     it('should delete a program with the ID passed in', function (done) {
-    //
-    //         chai.request(server)
-    //             .delete('/Programs/59f1e69dd0ae514f10a24a82')
-    //             .end(function(err, res){
-    //                 expect(res).to.have.status(200);
-    //                 expect(res.body).to.have.property('message').equal('Program Deleted!' ) ;
-    //                 done();
-    //             });
-    //     })
-    //
-    //     it('should error and display a message when an invalid id is passed in', function (done) {
-    //
-    //         chai.request(server)
-    //             .delete('/Programs/59f1e69dd0ae514')
-    //             .end(function(err, res){
-    //                 expect(res).to.have.status(404);
-    //                 expect(res.body).to.have.property('message').equal('Program not deleted!' ) ;
-    //                 done();
-    //             });
-    //     })
-    // });
-    //
-    // describe('DELETE/Programs', function () {
-    //     it('Clear the collection of all programs', function (done) {
-    //         chai.request(server)
-    //             .delete('/Programs')
-    //             .end(function(err, res){
-    //                 expect(res).to.have.status(200);
-    //                 expect(res.body).to.have.property('message').equal('All Programs Deleted!' ) ;
-    //                 done();
-    //             });
-    //
-    //
-    //
-    //     })
-    // });
+    describe('DELETE/Programs/:id', function () {
+        it('should delete a program with the ID passed in', function (done) {
+
+            chai.request(server)
+                .delete('/Programs/59f1e69dd0ae514f10a24a82')
+                .end(function(err, res){
+                    expect(res).to.have.status(200);
+                    expect(res.body).to.have.property('message').equal('Program Deleted!' ) ;
+                    done();
+                });
+        })
+
+        it('should error and display a message when an invalid id is passed in', function (done) {
+
+            chai.request(server)
+                .delete('/Programs/59f1e69dd0ae514')
+                .end(function(err, res){
+                    expect(res).to.have.status(404);
+                    expect(res.body).to.have.property('message').equal('Program not deleted!' ) ;
+                    done();
+                });
+        })
+    });
+
+    describe('DELETE/Programs', function () {
+        it('Clear the collection of all programs', function (done) {
+            chai.request(server)
+                .delete('/Programs')
+                .end(function(err, res){
+                    expect(res).to.have.status(200);
+                    expect(res.body).to.have.property('message').equal('All Programs Deleted!' ) ;
+                    done();
+                });
+
+
+
+        })
+    });
 
 });
 
