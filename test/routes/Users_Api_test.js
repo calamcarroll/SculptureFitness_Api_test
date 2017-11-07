@@ -100,7 +100,19 @@ describe('Users', function () {
                     done();
                 });
         });
+
+        it('should error when the users isnt found', function (done) {
+
+            chai.request(server)
+                .get('/users/59f1e69dd0')
+                .end(function (err, res) {
+                    expect(res).to.have.status(200);
+                    expect(res.body).to.have.property('message').equal('User NOT Found!' ) ;
+                    done();
+                });
+        });
     });
+
     describe('PUT /Users/:id/', function () {
         it('should display a message when the user has been updated', function(done) {
 
@@ -124,6 +136,7 @@ describe('Users', function () {
                 });
         });
     });
+
     describe('DELETE/Users/:id', function () {
         it('should delete a user with the ID passed in', function (done) {
 
