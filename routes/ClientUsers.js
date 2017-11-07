@@ -68,9 +68,11 @@ router.addUser = function(req, res) {
 
 router.deleteUser = function(req, res) {
     User.findByIdAndRemove(req.params.id, function(err) {
-        if (err)
+        if (err){
             res.send(err);
-        else
+            res.status(404);
+            res.json({ message: 'User not deleted'});
+        }else
             res.json({ message: 'User Deleted!'});
     });
 };

@@ -141,7 +141,7 @@ describe('Users', function () {
         it('should delete a user with the ID passed in', function (done) {
 
             chai.request(server)
-                .delete('/users/59f1e69dd0ae514f10a24a66')
+                .delete('/users/59f1e69dd0ae514f10a24a68')
                 .end(function(err, res){
                     expect(res).to.have.status(200);
                     expect(res.body).to.have.property('message').equal('User Deleted!' ) ;
