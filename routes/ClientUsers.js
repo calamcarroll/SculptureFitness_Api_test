@@ -5,25 +5,24 @@ var mongoose = require('mongoose');
 var db = mongoose.connection;
 
 
-
 // Database connection code
-mongoose.connect('mongodb://localhost:27017/usersdb', { useMongoClient: true });
+mongoose.connect('mongodb://localhost:27017/usersdb', {useMongoClient: true});
 
 
 db.on('error', function (err) {
     console.log('connection error', err);
 });
-db.once('open', function (){
+db.once('open', function () {
     console.log('Connected to usersdb');
 });
 
 
-router.getAllUsers = function(req, res){
+router.getAllUsers = function (req, res) {
 
-    User.find(function(err,User) {
+    User.find(function (err, User) {
 
-        if(err)
-            res.json({ message: 'User NOT Found!', errmsg : err } );
+        if (err)
+            res.json({message: 'User NOT Found!', errmsg: err});
         else
 
             res.json(User);
@@ -32,20 +31,18 @@ router.getAllUsers = function(req, res){
 };
 
 
+router.findOneUser = function (req, res) {
 
-
-router.findOneUser = function(req, res) {
-
-    User.find({ "_id" : req.params.id },function(err, Users) {
+    User.find({"_id": req.params.id}, function (err, Users) {
         if (err)
-            res.json({ message: 'User NOT Found!', errmsg : err } );
+            res.json({message: 'User NOT Found!', errmsg: err});
         else
             res.json(Users);
 
     });
 };
 
-router.addUser = function(req, res) {
+router.addUser = function (req, res) {
 
     var user = new User();
     user._id = req.body._id;
@@ -57,30 +54,30 @@ router.addUser = function(req, res) {
     user.Height = req.body.Height;
     user.BodyFat = req.body.BodyFat;
 
-    user.save(function(err) {
+    user.save(function (err) {
         if (err)
             res.send(err);
         else
 
-            res.json({ message: 'User Added!', data: user});
+            res.json({message: 'User Added!', data: user});
     });
 };
 
-router.deleteUser = function(req, res) {
-    User.findByIdAndRemove(req.params.id, function(err) {
-        if (err){
+router.deleteUser = function (req, res) {
+    User.findByIdAndRemove(req.params.id, function (err) {
+        if (err) {
             res.send(err);
             res.status(404);
-            res.json({ message: 'User not deleted'});
-        }else
-            res.json({ message: 'User Deleted!'});
+            res.json({message: 'User not deleted'});
+        } else
+            res.json({message: 'User Deleted!'});
     });
 };
 
 
-router.updateUserInfo = function(req,res) {
+router.updateUserInfo = function (req, res) {
 
-    User.findById(req.params.id, function(err,users) {
+    User.findById(req.params.id, function (err, users) {
         if (err)
             res.send(err);
         else {
@@ -98,7 +95,7 @@ router.updateUserInfo = function(req,res) {
                     res.json({message: 'Invalid User Id!'});
                 }
                 else
-                    res.json({ message: 'User has been updated', data: users });
+                    res.json({message: 'User has been updated', data: users});
             });
         }
     });

@@ -6,7 +6,7 @@ var User = require('../../models/Users');
 
 chai.use(chaiHttp);
 chai.use(require('chai-things'));
-var _ = require('lodash' );
+var _ = require('lodash');
 
 describe('Users', function () {
     beforeEach(function (done) {
@@ -107,17 +107,17 @@ describe('Users', function () {
                 .get('/users/59f1e69dd0')
                 .end(function (err, res) {
                     expect(res).to.have.status(200);
-                    expect(res.body).to.have.property('message').equal('User NOT Found!' ) ;
+                    expect(res.body).to.have.property('message').equal('User NOT Found!');
                     done();
                 });
         });
     });
 
     describe('PUT /Users/:id/', function () {
-        it('should display a message when the user has been updated', function(done) {
+        it('should display a message when the user has been updated', function (done) {
 
             var users = {
-                Username: "jDoyle" ,
+                Username: "jDoyle",
                 fName: "Joe",
                 lName: "Doyle",
                 Email: "JDoyle@gmail.com",
@@ -129,9 +129,9 @@ describe('Users', function () {
                 .put('/Users/59f1e69dd0ae514f10a24a66')
                 .send(users)
 
-                .end(function(err, res) {
+                .end(function (err, res) {
                     expect(res).to.have.status(200);
-                    expect(res.body).to.have.property('message').equal('User has been updated' ) ;
+                    expect(res.body).to.have.property('message').equal('User has been updated');
                     done();
                 });
         });
@@ -142,9 +142,9 @@ describe('Users', function () {
 
             chai.request(server)
                 .delete('/users/59f1e69dd0ae514f10a24a68')
-                .end(function(err, res){
+                .end(function (err, res) {
                     expect(res).to.have.status(200);
-                    expect(res.body).to.have.property('message').equal('User Deleted!' ) ;
+                    expect(res.body).to.have.property('message').equal('User Deleted!');
                     done();
                 });
 

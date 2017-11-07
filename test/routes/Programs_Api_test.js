@@ -7,15 +7,15 @@ var Program = require('../../models/Programs');
 
 chai.use(chaiHttp);
 chai.use(require('chai-things'));
-var _ = require('lodash' );
+var _ = require('lodash');
 
-describe('Programs', function (){
+describe('Programs', function () {
 
-    beforeEach(function (done){
-        Program.remove({}, function(err){
-            if(err)
+    beforeEach(function (done) {
+        Program.remove({}, function (err) {
+            if (err)
                 done(err);
-            else{
+            else {
                 var testProgram1 = new Program();
 
                 testProgram1._id = "59f1e69dd0ae514f10a24a82";
@@ -27,9 +27,9 @@ describe('Programs', function (){
                 testProgram1.Weight = 80;
 
                 testProgram1.save(function (err) {
-                    if(err)
+                    if (err)
                         console.log(err);
-                    else{
+                    else {
                         var testProgram2 = new Program();
 
                         testProgram2._id = "59f9fb109bd9dc7f544cadfa";
@@ -41,10 +41,9 @@ describe('Programs', function (){
                         testProgram2.Weight = 100;
 
                         testProgram2.save(function (err) {
-                            if(err)
+                            if (err)
                                 console.log(err)
-                            else
-                            {
+                            else {
                                 done()
                             }
                         })
@@ -55,10 +54,10 @@ describe('Programs', function (){
     })
 
     describe('POST /Programs', function () {
-        it('should return confirmation message and add a program', function(done) {
+        it('should return confirmation message and add a program', function (done) {
             var programs = {
                 _id: '5a008484b73e4b2ec8ecda03',
-                MuscleType: 'Legs ' ,
+                MuscleType: 'Legs ',
                 ExerciseName: 'Chest Press',
                 Sets: 4,
                 Reps: 8,
@@ -68,9 +67,9 @@ describe('Programs', function (){
             chai.request(server)
                 .post('/programs')
                 .send(programs)
-                .end(function(err, res) {
+                .end(function (err, res) {
                     expect(res).to.have.status(200);
-                    expect(res.body).to.have.property('message').equal('Program Added!' ) ;
+                    expect(res.body).to.have.property('message').equal('Program Added!');
                     done();
                 });
         });
@@ -104,7 +103,7 @@ describe('Programs', function (){
                 .get('/programs/59f1e69dd0ae514f1')
                 .end(function (err, res) {
                     expect(res).to.have.status(404);
-                    expect(res.body).to.have.property('message').equal('Program NOT Found!' ) ;
+                    expect(res.body).to.have.property('message').equal('Program NOT Found!');
                     done();
                 });
         });
@@ -124,24 +123,23 @@ describe('Programs', function (){
     });
 
 
-
     describe('PUT /Programs/:id/Weight', function () {
-        it('should display a message when weight has been added to program', function(done) {
+        it('should display a message when weight has been added to program', function (done) {
             chai.request(server)
                 .put('/Programs/59f1e69dd0ae514f10a24a82/Weight')
-                .end(function(err, res) {
+                .end(function (err, res) {
                     expect(res).to.have.status(200);
                     // expect(res.body).to.be.a('message');
-                    expect(res.body).to.have.property('message').equal('Weight incremented by 2kg!' ) ;
+                    expect(res.body).to.have.property('message').equal('Weight incremented by 2kg!');
                     done();
                 });
         });
-        it('should return a 404 status and message for invalid program ID', function(done) {
+        it('should return a 404 status and message for invalid program ID', function (done) {
             chai.request(server)
                 .put('/Programs/5a004a0f7571632e24e1a/Weight')
-                .end(function(err, res) {
+                .end(function (err, res) {
                     expect(res).to.have.status(404);
-                    expect(res.body).to.have.property('message').equal('Invalid Program Id!' ) ;
+                    expect(res.body).to.have.property('message').equal('Invalid Program Id!');
                     done();
                 });
         });
@@ -149,10 +147,10 @@ describe('Programs', function (){
     });
 
     describe('PUT /Programs/:id/', function () {
-        it('should display a message when the program has been updated', function(done) {
+        it('should display a message when the program has been updated', function (done) {
 
             var programs = {
-                MuscleType: 'Legs' ,
+                MuscleType: 'Legs',
                 ExerciseName: 'Leg Curl',
                 Sets: 4,
                 Reps: 8,
@@ -163,9 +161,9 @@ describe('Programs', function (){
                 .put('/Programs/59f1e69dd0ae514f10a24a82')
                 .send(programs)
 
-                .end(function(err, res) {
+                .end(function (err, res) {
                     expect(res).to.have.status(200);
-                    expect(res.body).to.have.property('message').equal('Program has been updated' ) ;
+                    expect(res.body).to.have.property('message').equal('Program has been updated');
                     done();
                 });
         });
@@ -178,9 +176,9 @@ describe('Programs', function (){
 
             chai.request(server)
                 .delete('/Programs/59f1e69dd0ae514f10a24a82')
-                .end(function(err, res){
+                .end(function (err, res) {
                     expect(res).to.have.status(200);
-                    expect(res.body).to.have.property('message').equal('Program Deleted!' ) ;
+                    expect(res.body).to.have.property('message').equal('Program Deleted!');
                     done();
                 });
         })
@@ -189,9 +187,9 @@ describe('Programs', function (){
 
             chai.request(server)
                 .delete('/Programs/59f1e69dd0ae514')
-                .end(function(err, res){
+                .end(function (err, res) {
                     expect(res).to.have.status(404);
-                    expect(res.body).to.have.property('message').equal('Program not deleted!' ) ;
+                    expect(res.body).to.have.property('message').equal('Program not deleted!');
                     done();
                 });
         })
@@ -201,12 +199,11 @@ describe('Programs', function (){
         it('Clear the collection of all programs', function (done) {
             chai.request(server)
                 .delete('/Programs')
-                .end(function(err, res){
+                .end(function (err, res) {
                     expect(res).to.have.status(200);
-                    expect(res.body).to.have.property('message').equal('All Programs Deleted!' ) ;
+                    expect(res.body).to.have.property('message').equal('All Programs Deleted!');
                     done();
                 });
-
 
 
         })
