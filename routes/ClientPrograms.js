@@ -67,7 +67,6 @@ router.addProgram = function(req, res) {
     program.RestTime = req.body.RestTime;
     program.Weight = req.body.Weight;
 
-    console.log('Adding program: ' + JSON.stringify(program));
 
     program.save(function(err) {
         if (err)
@@ -79,8 +78,10 @@ router.addProgram = function(req, res) {
 
 router.deleteProgram = function(req, res) {
     Program.findByIdAndRemove(req.params.id, function(err) {
-        if (err)
-            res.send(err);
+        if (err){
+            res.status(404);
+            res.json({ message: 'Program not deleted!'});
+        }
         else
             res.json({ message: 'Program Deleted!'});
     });

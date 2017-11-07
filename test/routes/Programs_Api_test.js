@@ -183,9 +183,17 @@ describe('Programs', function (){
                     expect(res.body).to.have.property('message').equal('Program Deleted!' ) ;
                     done();
                 });
+        })
 
+        it('should error and display a message when an invalid id is passed in', function (done) {
 
-
+            chai.request(server)
+                .delete('/Programs/59f1e69dd0ae514')
+                .end(function(err, res){
+                    expect(res).to.have.status(404);
+                    expect(res.body).to.have.property('message').equal('Program not deleted!' ) ;
+                    done();
+                });
         })
     });
 
